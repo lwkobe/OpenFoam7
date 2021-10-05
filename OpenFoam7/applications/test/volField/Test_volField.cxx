@@ -31,100 +31,100 @@ Application
 #include <fvCFD.hxx>
 #include <transformGeometricField.hxx>
 
-int tnbLib::Test_volField(int argc, char* argv[])
-{
-#include <setRootCase.lxx>
-#include <createTime.lxx>
-#include <createMesh.lxx>
-
-	Info << "Reading field p\n" << endl;
-	volScalarField p
-	(
-		IOobject
-		(
-			"p",
-			runTime.timeName(),
-			mesh,
-			IOobject::MUST_READ,
-			IOobject::AUTO_WRITE
-		),
-		mesh
-	);
-
-	Info << nl
-		<< "p.v().size(): "
-		<< p.v().size() << endl;
-
-	Info << "Reading field U\n" << endl;
-	volVectorField U
-	(
-		IOobject
-		(
-			"U",
-			runTime.timeName(),
-			mesh,
-			IOobject::MUST_READ,
-			IOobject::AUTO_WRITE
-		),
-		mesh
-	);
-
-//#include <createPhi.lxx>
-
-	Info << "Reading/calculating face flux field phi\n" << endl;
-
-	surfaceScalarField phi
-	(
-		IOobject
-		(
-			"phi",
-			runTime.timeName(),
-			mesh,
-			IOobject::READ_IF_PRESENT,
-			IOobject::AUTO_WRITE
-		),
-		fvc::flux(U)
-	);
-
-	GeometricField<symmTensor, fvPatchField, volMesh> st
-	(
-		IOobject
-		(
-			"st",
-			runTime.timeName(),
-			mesh,
-			IOobject::NO_READ,
-			IOobject::NO_WRITE
-		),
-		mesh,
-		dimensioned<symmTensor>("st", dimless, symmTensor::one),
-		zeroGradientFvPatchSymmTensorField::typeName
-	);
-
-	SolverPerformance<symmTensor> sP =
-		(
-			solve
-			(
-				fvm::ddt(st)
-				+ fvm::div(phi, st)
-				- fvm::laplacian
-				(
-					dimensionedScalar(sqr(dimLength) / dimTime, 1),
-					st
-				)
-				==
-				dimensioned<symmTensor>
-				(
-					"source",
-					dimless / dimTime,
-					symmTensor(0, 2, 0, 1, 1.5, 0)
-					)
-			)
-			);
-
-	Info << nl
-		<< "Detailed SolverPerformance<symmTensor>: " << nl
-		<< "  " << sP << endl;
-
-	return 0;
-}
+//int tnbLib::Test_volField(int argc, char* argv[])
+//{
+//#include <setRootCase.lxx>
+//#include <createTime.lxx>
+//#include <createMesh.lxx>
+//
+//	Info << "Reading field p\n" << endl;
+//	volScalarField p
+//	(
+//		IOobject
+//		(
+//			"p",
+//			runTime.timeName(),
+//			mesh,
+//			IOobject::MUST_READ,
+//			IOobject::AUTO_WRITE
+//		),
+//		mesh
+//	);
+//
+//	Info << nl
+//		<< "p.v().size(): "
+//		<< p.v().size() << endl;
+//
+//	Info << "Reading field U\n" << endl;
+//	volVectorField U
+//	(
+//		IOobject
+//		(
+//			"U",
+//			runTime.timeName(),
+//			mesh,
+//			IOobject::MUST_READ,
+//			IOobject::AUTO_WRITE
+//		),
+//		mesh
+//	);
+//
+////#include <createPhi.lxx>
+//
+//	Info << "Reading/calculating face flux field phi\n" << endl;
+//
+//	surfaceScalarField phi
+//	(
+//		IOobject
+//		(
+//			"phi",
+//			runTime.timeName(),
+//			mesh,
+//			IOobject::READ_IF_PRESENT,
+//			IOobject::AUTO_WRITE
+//		),
+//		fvc::flux(U)
+//	);
+//
+//	GeometricField<symmTensor, fvPatchField, volMesh> st
+//	(
+//		IOobject
+//		(
+//			"st",
+//			runTime.timeName(),
+//			mesh,
+//			IOobject::NO_READ,
+//			IOobject::NO_WRITE
+//		),
+//		mesh,
+//		dimensioned<symmTensor>("st", dimless, symmTensor::one),
+//		zeroGradientFvPatchSymmTensorField::typeName
+//	);
+//
+//	SolverPerformance<symmTensor> sP =
+//		(
+//			solve
+//			(
+//				fvm::ddt(st)
+//				+ fvm::div(phi, st)
+//				- fvm::laplacian
+//				(
+//					dimensionedScalar(sqr(dimLength) / dimTime, 1),
+//					st
+//				)
+//				==
+//				dimensioned<symmTensor>
+//				(
+//					"source",
+//					dimless / dimTime,
+//					symmTensor(0, 2, 0, 1, 1.5, 0)
+//					)
+//			)
+//			);
+//
+//	Info << nl
+//		<< "Detailed SolverPerformance<symmTensor>: " << nl
+//		<< "  " << sP << endl;
+//
+//	return 0;
+//}

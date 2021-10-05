@@ -35,26 +35,26 @@ Description
 #include <MapFvFields.hxx>
 #include <MapGeometricFields.hxx>
 
-void tnbLib::Test_cyclic(int argc, char *argv[])
-{
-#include <setRootCase.lxx>
-
-#include <createTime.lxx>
-#include <createMesh.lxx>
-#include "createFields.lxx"
-
-	Info << polyPatch::constraintTypes() << endl;
-
-	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-	Info << nl << "Starting tests" << endl;
-
-	Info << mesh.V() << endl;
-	Info << mesh.Sf() << endl;
-	Info << mesh.owner() << endl;
-	Info << mesh.neighbour() << endl;
-
-	Info << fvc::div(U);
-
-	Info << "end" << endl;
-}
+//void tnbLib::Test_cyclic(int argc, char *argv[])
+//{
+//#include <setRootCase.lxx>
+//
+//#include <createTime.lxx>
+//#include <createMesh.lxx>
+//#include "createFields.lxx"
+//
+//	Info << polyPatch::constraintTypes() << endl;
+//
+//	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//
+//	Info << nl << "Starting tests" << endl;
+//
+//	Info << mesh.V() << endl;
+//	Info << mesh.Sf() << endl;
+//	Info << mesh.owner() << endl;
+//	Info << mesh.neighbour() << endl;
+//
+//	Info << fvc::div(U);
+//
+//	Info << "end" << endl;
+//}

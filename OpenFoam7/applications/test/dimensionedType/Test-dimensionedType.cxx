@@ -27,57 +27,57 @@ License
 
 #include <dimensionedTensor.hxx>
 
-void tnbLib::Test_dimensionedType()
-{
-	dimensionedTensor dt("dt", dimLength, tensor(0, 1, 2, 3, 4, 5, 6, 7, 8));
-
-	Info << "dt.component(tensor::XX): " << dt.component(tensor::XX) << endl;
-
-	dimensionedScalar ds("ds", dimTime, 1.0);
-
-	Info << "ds*dt dt*ds: " << ds * dt << " " << dt * ds << endl;
-
-	dimensionedTensor dt2("dt2", dimLength, tensor(1, 1, 2, 3, 4, 5, 6, 7, 8));
-
-	Info << "cmptMultiply(dt, dt2): " << cmptMultiply(dt, dt2) << endl;
-	Info << "cmptDivide(dt, dt2): " << cmptDivide(dt, dt2) << endl;
-
-	{
-		Pout << "dimensionSet construct from is:"
-			<< dimensionSet(IStringStream("[Pa m^2 s^-2]")())
-			<< endl;
-
-		IStringStream is("[Pa m^2 s^-2]");
-		dimensionSet dset(dimless);
-		is >> dset;
-		Pout << "dimensionSet read:" << dset << endl;
-	}
-
-	{
-		Pout << "construct from is:"
-			<< dimensionedScalar(IStringStream("bla [Pa mm^2 s^-2] 3.0")())
-			<< endl;
-		Pout << "construct from name,is:"
-			<< dimensionedScalar
-			(
-				"ABC",
-				IStringStream("[Pa mm^2 s^-2] 3.0")()
-			) << endl;
-		Pout << "construct from name,dimensionSet,is:"
-			<< dimensionedScalar
-			(
-				"ABC",
-				dimLength,
-				IStringStream("bla [mm] 3.0")()
-			) << endl;
-		{
-			IStringStream is("bla [mm] 3.0");
-			dimensionedScalar ds;
-			is >> ds;
-			Pout << "read:" << ds << endl;
-		}
-	}
-
-
-	Info << "End\n" << endl;
-}
+//void tnbLib::Test_dimensionedType()
+//{
+//	dimensionedTensor dt("dt", dimLength, tensor(0, 1, 2, 3, 4, 5, 6, 7, 8));
+//
+//	Info << "dt.component(tensor::XX): " << dt.component(tensor::XX) << endl;
+//
+//	dimensionedScalar ds("ds", dimTime, 1.0);
+//
+//	Info << "ds*dt dt*ds: " << ds * dt << " " << dt * ds << endl;
+//
+//	dimensionedTensor dt2("dt2", dimLength, tensor(1, 1, 2, 3, 4, 5, 6, 7, 8));
+//
+//	Info << "cmptMultiply(dt, dt2): " << cmptMultiply(dt, dt2) << endl;
+//	Info << "cmptDivide(dt, dt2): " << cmptDivide(dt, dt2) << endl;
+//
+//	{
+//		Pout << "dimensionSet construct from is:"
+//			<< dimensionSet(IStringStream("[Pa m^2 s^-2]")())
+//			<< endl;
+//
+//		IStringStream is("[Pa m^2 s^-2]");
+//		dimensionSet dset(dimless);
+//		is >> dset;
+//		Pout << "dimensionSet read:" << dset << endl;
+//	}
+//
+//	{
+//		Pout << "construct from is:"
+//			<< dimensionedScalar(IStringStream("bla [Pa mm^2 s^-2] 3.0")())
+//			<< endl;
+//		Pout << "construct from name,is:"
+//			<< dimensionedScalar
+//			(
+//				"ABC",
+//				IStringStream("[Pa mm^2 s^-2] 3.0")()
+//			) << endl;
+//		Pout << "construct from name,dimensionSet,is:"
+//			<< dimensionedScalar
+//			(
+//				"ABC",
+//				dimLength,
+//				IStringStream("bla [mm] 3.0")()
+//			) << endl;
+//		{
+//			IStringStream is("bla [mm] 3.0");
+//			dimensionedScalar ds;
+//			is >> ds;
+//			Pout << "read:" << ds << endl;
+//		}
+//	}
+//
+//
+//	Info << "End\n" << endl;
+//}

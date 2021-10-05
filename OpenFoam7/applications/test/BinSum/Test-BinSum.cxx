@@ -41,10 +41,9 @@ using namespace tnbLib;
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-void tnbLib::Test_BinSum()
+/*void tnbLib::Test_BinSum()
 {
 	Random rndGen(0);
-
 	scalarField samples(10000000);
 	forAll(samples, i)
 	{
@@ -69,7 +68,7 @@ void tnbLib::Test_BinSum()
 	Info << "average: " << sum / count << endl;
 
 	Info << "End\n" << endl;
-}
+}*/
 
 
 // ************************************************************************* //

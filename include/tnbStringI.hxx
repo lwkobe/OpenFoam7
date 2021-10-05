@@ -43,9 +43,7 @@ inline tnbLib::string::string(const char c)
 {}
 
 
-inline tnbLib::string::string(const size_type len, const char c)
-	:
-	std::string(len, c)
+inline tnbLib::string::string(const size_type len, const char c) : std::string(len, c)
 {}
 
 

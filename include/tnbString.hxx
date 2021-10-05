@@ -52,7 +52,7 @@ SourceFiles
 #include <string>
 #include <cstring>
 #include <cstdlib>
-
+#include <Base_Module.hxx>
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace tnbLib
@@ -73,9 +73,7 @@ namespace tnbLib
 							   Class string Declaration
 	\*---------------------------------------------------------------------------*/
 
-	class string
-		:
-		public std::string
+	class string : public std::string
 	{
 	public:
 

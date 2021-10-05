@@ -103,21 +103,21 @@ public:
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // Main program:
 
-void tnbLib::Test_callback()
-{
-	callbackRegistry cbr;
-
-	objectWithCallback ob1("ob1", cbr);
-	objectWithCallback ob2("ob2", cbr);
-
-	cbr.testCallbackFunction();
-
-	{
-		objectWithCallback ob1("ob1", cbr);
-		cbr.testCallbackFunction();
-	}
-
-	cbr.testCallbackFunction();
-
-	Info << "End\n" << endl;
-}
+//void tnbLib::Test_callback()
+//{
+//	callbackRegistry cbr;
+//
+//	objectWithCallback ob1("ob1", cbr);
+//	objectWithCallback ob2("ob2", cbr);
+//
+//	cbr.testCallbackFunction();
+//
+//	{
+//		objectWithCallback ob1("ob1", cbr);
+//		cbr.testCallbackFunction();
+//	}
+//
+//	cbr.testCallbackFunction();
+//
+//	Info << "End\n" << endl;
+//}

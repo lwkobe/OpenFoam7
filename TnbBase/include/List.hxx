@@ -92,9 +92,7 @@ namespace tnbLib
 	\*---------------------------------------------------------------------------*/
 
 	template<class T>
-	class List
-		:
-		public UList<T>
+	class List : public UList<T>
 	{
 		// Private Member Functions
 

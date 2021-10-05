@@ -39,6 +39,7 @@ SourceFiles
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #include <includeModule.hxx>
+#include <Base_Module.hxx>
 
 namespace tnbLib
 {

@@ -41,138 +41,138 @@ using namespace tnbLib;
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 //  Main program:
 
-void tnbLib::Test_CompactIOList(int argc, char *argv[])
-{
-#include <setRootCase.lxx>
-#include <createTime.lxx>
-
-	IOstream::streamFormat format = IOstream::BINARY;
-	// IOstream::streamFormat format=IOstream::ASCII;
-
-	const label size = 20000000;
-
-	// Old format
-	// ~~~~~~~~~~
-
-	{
-		// Construct big faceList in old format
-		faceIOList faces2
-		(
-			IOobject
-			(
-				"faces2",
-				runTime.constant(),
-				polyMesh::meshSubDir,
-				runTime,
-				IOobject::NO_READ,
-				IOobject::NO_WRITE,
-				false
-			),
-			size
-		);
-
-		const face f(identity(4));
-
-		forAll(faces2, i)
-		{
-			faces2[i] = f;
-		}
-
-		Info << "Constructed faceList in = "
-			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
-
-
-		// Write binary
-		faces2.writeObject
-		(
-			format,
-			IOstream::currentVersion,
-			IOstream::UNCOMPRESSED,
-			true
-		);
-
-		Info << "Written old format faceList in = "
-			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
-
-		// Read
-		faceIOList faces3
-		(
-			IOobject
-			(
-				"faces2",
-				runTime.constant(),
-				polyMesh::meshSubDir,
-				runTime,
-				IOobject::MUST_READ,
-				IOobject::NO_WRITE,
-				false
-			)
-		);
-
-		Info << "Read old format " << faces3.size() << " faceList in = "
-			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
-	}
-
-
-	// New format
-	// ~~~~~~~~~~
-
-	{
-		// Construct big faceList in new format
-		faceCompactIOList faces2
-		(
-			IOobject
-			(
-				"faces2",
-				runTime.constant(),
-				polyMesh::meshSubDir,
-				runTime,
-				IOobject::NO_READ,
-				IOobject::NO_WRITE,
-				false
-			),
-			size
-		);
-
-		const face f(identity(4));
-
-		forAll(faces2, i)
-		{
-			faces2[i] = f;
-		}
-
-		Info << "Constructed new format faceList in = "
-			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
-
-
-		// Write binary
-		faces2.writeObject
-		(
-			format,
-			IOstream::currentVersion,
-			IOstream::UNCOMPRESSED,
-			true
-		);
-
-		Info << "Written new format faceList in = "
-			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
-
-		// Read
-		faceCompactIOList faces3
-		(
-			IOobject
-			(
-				"faces2",
-				runTime.constant(),
-				polyMesh::meshSubDir,
-				runTime,
-				IOobject::MUST_READ,
-				IOobject::NO_WRITE,
-				false
-			)
-		);
-
-		Info << "Read new format " << faces3.size() << " faceList in = "
-			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
-	}
-}
+//void tnbLib::Test_CompactIOList(int argc, char *argv[])
+//{
+//#include <setRootCase.lxx>
+//#include <createTime.lxx>
+//
+//	IOstream::streamFormat format = IOstream::BINARY;
+//	// IOstream::streamFormat format=IOstream::ASCII;
+//
+//	const label size = 20000000;
+//
+//	// Old format
+//	// ~~~~~~~~~~
+//
+//	{
+//		// Construct big faceList in old format
+//		faceIOList faces2
+//		(
+//			IOobject
+//			(
+//				"faces2",
+//				runTime.constant(),
+//				polyMesh::meshSubDir,
+//				runTime,
+//				IOobject::NO_READ,
+//				IOobject::NO_WRITE,
+//				false
+//			),
+//			size
+//		);
+//
+//		const face f(identity(4));
+//
+//		forAll(faces2, i)
+//		{
+//			faces2[i] = f;
+//		}
+//
+//		Info << "Constructed faceList in = "
+//			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
+//
+//
+//		// Write binary
+//		faces2.writeObject
+//		(
+//			format,
+//			IOstream::currentVersion,
+//			IOstream::UNCOMPRESSED,
+//			true
+//		);
+//
+//		Info << "Written old format faceList in = "
+//			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
+//
+//		// Read
+//		faceIOList faces3
+//		(
+//			IOobject
+//			(
+//				"faces2",
+//				runTime.constant(),
+//				polyMesh::meshSubDir,
+//				runTime,
+//				IOobject::MUST_READ,
+//				IOobject::NO_WRITE,
+//				false
+//			)
+//		);
+//
+//		Info << "Read old format " << faces3.size() << " faceList in = "
+//			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
+//	}
+//
+//
+//	// New format
+//	// ~~~~~~~~~~
+//
+//	{
+//		// Construct big faceList in new format
+//		faceCompactIOList faces2
+//		(
+//			IOobject
+//			(
+//				"faces2",
+//				runTime.constant(),
+//				polyMesh::meshSubDir,
+//				runTime,
+//				IOobject::NO_READ,
+//				IOobject::NO_WRITE,
+//				false
+//			),
+//			size
+//		);
+//
+//		const face f(identity(4));
+//
+//		forAll(faces2, i)
+//		{
+//			faces2[i] = f;
+//		}
+//
+//		Info << "Constructed new format faceList in = "
+//			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
+//
+//
+//		// Write binary
+//		faces2.writeObject
+//		(
+//			format,
+//			IOstream::currentVersion,
+//			IOstream::UNCOMPRESSED,
+//			true
+//		);
+//
+//		Info << "Written new format faceList in = "
+//			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
+//
+//		// Read
+//		faceCompactIOList faces3
+//		(
+//			IOobject
+//			(
+//				"faces2",
+//				runTime.constant(),
+//				polyMesh::meshSubDir,
+//				runTime,
+//				IOobject::MUST_READ,
+//				IOobject::NO_WRITE,
+//				false
+//			)
+//		);
+//
+//		Info << "Read new format " << faces3.size() << " faceList in = "
+//			<< runTime.cpuTimeIncrement() << " s" << nl << endl;
+//	}
+//}
